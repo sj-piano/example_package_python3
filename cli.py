@@ -88,7 +88,7 @@ def main():
   parser.add_argument(
     '-d', '--debug',
     action='store_true',
-    help="Sets logLevel to 'debug'. This overrides --logLevel.",
+    help="Sets log level to 'debug'. This overrides --log-level.",
   )
 
   parser.add_argument(
