@@ -66,8 +66,6 @@ def main():
 
   # Capture and parse command-line arguments.
 
-  # Note: We use camelCase for option names because it's faster to type.
-
   parser = argparse.ArgumentParser(
     description='Command-Line Interface (CLI) for using the example_python3_package package.'
   )

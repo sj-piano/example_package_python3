@@ -93,7 +93,7 @@ pytest3 example_python3_package/test/test_hello.py::test_hello
 # Print log output in real-time during a single test
 pytest3 --capture=no --log-cli-level=INFO example_python3_package/test/test_hello.py::test_hello
 
-# Note: The --capture=no option will also cause This will also cause print statements within the test code to produce output.
+# Note: The --capture=no option will also cause print statements within the test code to produce output.
 
 ```
 
