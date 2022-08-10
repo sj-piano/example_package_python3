@@ -79,7 +79,7 @@ def main():
   )
 
   parser.add_argument(
-    '-l', '--logLevel', type=str, dest='log_level',
+    '-l', '--log-level', type=str, dest='log_level',
     choices=['debug', 'info', 'warning', 'error'],
     help="Choose logging level (default: '%(default)s').",
     default='error',
@@ -92,19 +92,19 @@ def main():
   )
 
   parser.add_argument(
-    '-s', '--logTimestamp', dest='log_timestamp',
+    '-s', '--log-timestamp', dest='log_timestamp',
     action='store_true',
     help="Choose whether to prepend a timestamp to each log line.",
   )
 
   parser.add_argument(
-    '-x', '--logToFile', dest='log_to_file',
+    '-x', '--log-to-file', dest='log_to_file',
     action='store_true',
     help="Choose whether to save log output to a file.",
   )
 
   parser.add_argument(
-    '-z', '--logFile', dest='log_file',
+    '-z', '--log-file', dest='log_file',
     help="The path to the file that log output will be written to.",
     default='log_example_python3_package.txt',
   )
@@ -126,7 +126,7 @@ def main():
   # Note: If you add a new task function, then its name must be added to this list.
   tasks = """
 hello hello2 hello3
-getPythonVersion
+get_python_version
 """.split()
   if a.task not in tasks:
     msg = "Unrecognised task: {}".format(a.task)
@@ -167,12 +167,12 @@ def hello3(a):
 
 
 
-def getPythonVersion(a):
+def get_python_version(a):
   # Confirm:
   # - that we can run a shell command.
   check = util.misc.shell_tool_exists('python3')
   v.validate_boolean(check)
-  if not check == True:
+  if check is not True:
     msg = "Can't find 'python3' tool in bash shell'"
     raise ValueError(msg)
   cmd = 'python3 --version'

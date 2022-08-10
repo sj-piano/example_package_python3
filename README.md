@@ -18,8 +18,6 @@ This is a reusable template for a Python 3 package.
 
 - All indentation is two spaces. No exceptions. Configure your editor to use tab to insert two spaces and backspace to delete two spaces.
 
-- cli.py: Option names use camelCase because it's faster to type. Internally, all function names are snake case as usual.
-
 - Logging: Every code file has its own namespaced logger, which records the function name and line number of the log call. Logging settings are set at the top (via cli.py or by the calling of `setup()` by a parent package) and propagate down. Manual adjustments (e.g. setting the log level of a noisy submodule to `error`) can be made via an extra explicit call to the submodule's `setup()` method.
 
 - Using keyword function arguments, each of which is on its own line, makes Python code easier to maintain. It's easier to read and diffs are easier to check. New arguments can be added without having to think about line wrapping.
@@ -59,15 +57,15 @@ python3 cli.py --help
 
 python3 cli.py --task hello
 
-python3 cli.py --task hello --logLevel=info
+python3 cli.py --task hello --log-level=info
 
-python3 cli.py --task hello --logLevel=debug
+python3 cli.py --task hello --log-level=debug
 
 python3 cli.py --task hello2
 
 python3 cli.py --task hello3
 
-python3 cli.py --task getPythonVersion
+python3 cli.py --task get_python_version
 
 
 
