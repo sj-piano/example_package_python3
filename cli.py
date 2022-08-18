@@ -9,14 +9,14 @@ import logging
 
 # Local imports
 # (Can't use relative imports because this is a top-level script)
-import example_python3_package
+import example_package_python3
 
 
 
 
 # Shortcuts
 from os.path import isdir, isfile, join
-util = example_python3_package.util
+util = example_package_python3.util
 v = util.validate
 
 
@@ -40,7 +40,7 @@ def setup(
     ):
   logger_name = 'cli'
   # Configure logger for this module.
-  example_python3_package.util.module_logger.configure_module_logger(
+  example_package_python3.util.module_logger.configure_module_logger(
     logger = logger,
     logger_name = logger_name,
     log_level = log_level,
@@ -49,10 +49,10 @@ def setup(
     log_file = log_file,
   )
   deb('Setup complete.')
-  # Configure logging levels for example_python3_package package.
+  # Configure logging levels for example_package_python3 package.
   # By default, without setup, it logs at ERROR level.
   # Optionally, the package could be configured here to use a different log level, by e.g. passing in 'error' instead of log_level.
-  example_python3_package.setup(
+  example_package_python3.setup(
     log_level = log_level,
     debug = debug,
     log_timestamp = log_timestamp,
@@ -67,7 +67,7 @@ def main():
   # Capture and parse command-line arguments.
 
   parser = argparse.ArgumentParser(
-    description='Command-Line Interface (CLI) for using the example_python3_package package.'
+    description='Command-Line Interface (CLI) for using the example_package_python3 package.'
   )
 
   parser.add_argument(
@@ -104,7 +104,7 @@ def main():
   parser.add_argument(
     '-z', '--log-file', dest='log_file',
     help="The path to the file that log output will be written to.",
-    default='log_example_python3_package.txt',
+    default='log_example_package_python3.txt',
   )
 
   a = parser.parse_args()
@@ -152,7 +152,7 @@ def hello2(a):
   # Confirm:
   # - that we can run a simple task from within the package.
   # - that the package has working logging.
-  example_python3_package.code.hello.hello()
+  example_package_python3.code.hello.hello()
 
 
 
@@ -160,7 +160,7 @@ def hello2(a):
 def hello3(a):
   # Confirm:
   # - that we can run a simple package task that loads a resource file that is stored with the code.
-  example_python3_package.code.hello.hello_resource()
+  example_package_python3.code.hello.hello_resource()
 
 
 
