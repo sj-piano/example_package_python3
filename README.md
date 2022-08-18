@@ -82,16 +82,16 @@ Tests:
 pytest3
 
 # Run all tests in a specific test file
-pytest3 example_package_python3/test/test_hello.py
+pytest3 example_package/test/test_hello.py
 
 # Run tests with relatively little output
-pytest3 --quiet example_package_python3/test/test_hello.py
+pytest3 --quiet example_package/test/test_hello.py
 
 # Run a single test
-pytest3 example_package_python3/test/test_hello.py::test_hello
+pytest3 example_package/test/test_hello.py::test_hello
 
 # Print log output in real-time during a single test
-pytest3 --capture=no --log-cli-level=INFO example_package_python3/test/test_hello.py::test_hello
+pytest3 --capture=no --log-cli-level=INFO example_package/test/test_hello.py::test_hello
 
 # Note: The --capture=no option will also cause print statements within the test code to produce output.
 
@@ -104,13 +104,13 @@ Code style:
 
 ```bash
 
-pycodestyle example_package_python3/code/hello.py
+pycodestyle example_package/code/hello.py
 
 pycodestyle --filename=*.py
 
 pycodestyle --filename=*.py --statistics
 
-pycodestyle --filename=*.py --exclude example_package_python3/submodules
+pycodestyle --filename=*.py --exclude example_package/submodules
 
 ```
 
