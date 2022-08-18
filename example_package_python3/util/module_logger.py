@@ -87,10 +87,16 @@ def configure_module_logger(
   )
   log_formatter2 = None
   if colorlog_imported:
-    log_format_color = log_format.replace('%(levelname)', '%(log_color)s%(levelname)')
+    # Build a new log format in which we apply colors to sections of the log line.
+    # Notes:
+    # - The default color is white.
+    # - The default approach is to color only the log level text (e.g. INFO) so that everything else is easily readable if the background color of the terminal is changed (e.g. to 'red' to indicate a production server).
+    # - A log color applies to the text that starts immediately afterwards, and continues until the end of the line or until a new log color is applied.
+    log_format_color = log_format.replace('%(levelname)-8s ', '%(log_color)s%(levelname)-8s %(baseline_log_color)s')
+    # Apply the message log color to the message text.
     log_format_color = log_format_color.replace('%(message)', '%(message_log_color)s%(message)')
     # Example log_format_color:
-    # '%(asctime)s %(log_color)s%(levelname)-8s [%(name)s: %(lineno)s (%(funcName)s)] %(message_log_color)s%(message)s'
+    # '%(asctime)s %(log_color)s%(levelname)-8s %(baseline_log_color)s[%(name)s: %(lineno)s (%(funcName)s)] %(message_log_color)s%(message)s'
     log_formatter2 = colorlog.ColoredFormatter(
       log_format_color,
       datefmt='%Y-%m-%d %H:%M:%S',
@@ -104,16 +110,23 @@ def configure_module_logger(
         'ERROR': 'red',
         'CRITICAL': 'red,bg_white',
       },
-      # secondary_log_colors controls the value of message_log_color.
-      # If a level is commented out, the message text will have the base text color (which is set in log_colors).
+      # secondary_log_colors controls the value of baseline & message log colors.
+      # If a level is commented out, the relevant color from log_colors will be used instead.
       secondary_log_colors={
-        'message': {
-          'DEBUG': 'blue',
-          # 'INFO': 'white',
+        'baseline': {
+          'DEBUG': 'white',
+          'INFO': 'white',
           'WARNING': 'white',
           'ERROR': 'white',
           'CRITICAL': 'white',
-        }
+        },
+        'message': {
+          'DEBUG': 'white',
+          'INFO': 'white',
+          'WARNING': 'white',
+          'ERROR': 'white',
+          'CRITICAL': 'white',
+        },
       },
     )
   # Set up console handler.
