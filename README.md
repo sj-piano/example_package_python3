@@ -53,21 +53,21 @@ Test data is always stored in the `data` subdirectory. This means that multiple 
 
 ```bash
 
-python3 cli.py
+python cli.py
 
-python3 cli.py --help
+python cli.py --help
 
-python3 cli.py --task hello
+python cli.py --task hello
 
-python3 cli.py --task hello --log-level=info
+python cli.py --task hello --log-level=info
 
-python3 cli.py --task hello --log-level=debug
+python cli.py --task hello --log-level=debug
 
-python3 cli.py --task hello2
+python cli.py --task hello2
 
-python3 cli.py --task hello3
+python cli.py --task hello3
 
-python3 cli.py --task get_python_version
+python cli.py --task get_python_version
 
 
 
@@ -79,19 +79,19 @@ Tests:
 ```bash
 
 # Run all tests, including submodule tests.
-pytest3
+pytest
 
 # Run all tests in a specific test file
-pytest3 example_package/test/test_hello.py
+pytest example_package/test/test_hello.py
 
 # Run tests with relatively little output
-pytest3 --quiet example_package/test/test_hello.py
+pytest --quiet example_package/test/test_hello.py
 
 # Run a single test
-pytest3 example_package/test/test_hello.py::test_hello
+pytest example_package/test/test_hello.py::test_hello
 
 # Print log output in real-time during a single test
-pytest3 --capture=no --log-cli-level=INFO example_package/test/test_hello.py::test_hello
+pytest --capture=no --log-cli-level=INFO example_package/test/test_hello.py::test_hello
 
 # Note: The --capture=no option will also cause print statements within the test code to produce output.
 
