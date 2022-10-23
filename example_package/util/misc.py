@@ -1,6 +1,7 @@
 # Imports
 import os
 import subprocess
+import re
 
 
 
@@ -13,6 +14,12 @@ from . import validate as v
 
 # Shortcuts
 from os.path import join
+
+
+
+
+def remove_whitespace(text):
+  return re.sub(r"\s+", "", text)
 
 
 
@@ -46,3 +53,6 @@ def stop(msg=None):
     print(msg)
   import sys
   sys.exit()
+
+
+
